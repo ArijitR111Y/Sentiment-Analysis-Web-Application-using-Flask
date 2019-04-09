@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="center">
+        <ul class="list-group">
+            {% for sentence, polarity in final_analysis%}
+                {% if polarity == 'positive' %}
+                    <li class="list-group-item list-group-item-success">"{{sentence}}" has a polarity - {{polarity}}</li>
+                {% elif polarity == 'neutral' %}
+                    <li class="list-group-item list-group-item-info">"{{sentence}}" has a polarity - {{polarity}}</li>
+                {% else %}
+                    <li class="list-group-item list-group-item-danger">"{{sentence}}" has a polarity - {{polarity}}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <br>
+        <h3>The Overall Polarity of the Entire Opinion is</h3>
+        {% if net_polarity > 0 %}
+            <h1>Positive</h1>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{ '%.2f'%(net_polarity*100) }}"
+                    aria-valuemin="0" aria-valuemax="100" style="width: {{ '%.2f'%(net_polarity*100) }}%">
+                </div>
+            </div>
+        {% elif net_polarity == 0 %}
+            <h1>Neutral</h1>
+        {% else %}
+            <h1>Negative</h1>
+            <div class="progress">
+                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="{{ '%.2f'%(-1*net_polarity*100) }}"
+                    aria-valuemin="0" aria-valuemax="100" style="width: {{ '%.2f'%(-1*net_polarity*100) }}%">
+                </div>
+            </div>
+        {% endif %}
+        <br>
+        <p>Analyze sentiments for more opinions <a href="{{ url_for('home') }}">here</a>.</p>
+    </div>
+{% endblock %}

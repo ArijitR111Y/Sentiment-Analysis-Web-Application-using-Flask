@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="center">
+            <form action="{{ url_for('predict') }}" method="POST">
+                <div>
+                    <textarea name="opinion" id="opinion" cols="50" rows="4" required placeholder="Enter your opinion" style="padding: 5%;"></textarea>
+                    <br><br>
+                    <input type="submit" class="btn" value="Check Opinion">
+                </div>
+            </form>
+    </div>
+{% endblock%}
