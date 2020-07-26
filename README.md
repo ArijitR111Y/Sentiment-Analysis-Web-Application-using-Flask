@@ -7,5 +7,7 @@ Set of python dependencies:<br>
 @textblob <br>
 @flask (obviously, duh!)
 
+--Test commit
+
 To run the app:
   <i>python predictOpinion.py</i>
