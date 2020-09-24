@@ -5,7 +5,7 @@ This is a flask-powered web application for a simple yet beautiful interface to 
 
 Set of python dependencies:<br>
 @textblob <br>
-@flask (obviously, duh!)
+@flask
 
 --Test commit
 
